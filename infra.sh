@@ -122,12 +122,12 @@ az network route-table create \
   -n rt-${PREFIX}RouteTable
 
 # Create a default route with 0.0.0.0/0 prefix and the next hop as the Azure firewall virtual appliance to inspect all traffic.
-public_ip=$(az network public-ip show --resource-group ${RG_NAME} --name ${FIREWALL_NAME}-pip --query "ipAddress" --output tsv)
+private_firewall_ip=$(az network private-endpoint show --name pvt-${PREFIX}Endpoint --resource-group ${RG_NAME} --query "customDnsConfigs[0].ipAddresses" --output tsv)
 az network route-table route create -g ${RG_NAME} \
   --route-table-name rt-${PREFIX}RouteTable -n default \
   --next-hop-type VirtualAppliance \
   --address-prefix 0.0.0.0/0 \
-  --next-hop-ip-address ${public_ip}
+  --next-hop-ip-address ${private_firewall_ip}
 
 # Associate the two subnets with the route table
 az network vnet subnet update -g ${RG_NAME} \
@@ -143,7 +143,7 @@ az network vnet subnet update -g ${RG_NAME} \
 # Create a NAT rule collection and a single rule. The source address is the public IP range of Microsoft Teams
 # Destination address is that of the firewall.
 # The translated address is that of the app service's private link.
-prv_link_ip=$(az network private-endpoint show --name pvt-${PREFIX}Endpoint --resource-group ${RG_NAME} --query "customDnsConfigs[0].ipAddresses" --output tsv)
+public_firewall_ip=$(az network public-ip show --resource-group ${RG_NAME} --name ${FIREWALL_NAME}-pip --query "ipAddress" --output tsv)
 az network firewall nat-rule create \
   --resource-group ${RG_NAME} \
   --collection-name coll-${PREFIX}-nat-rules \
@@ -155,7 +155,7 @@ az network firewall nat-rule create \
   --firewall-name ${FIREWALL_NAME} \
   --name rl-ip2appservice \
   --protocols TCP \
-  --translated-address ${prv_link_ip} \
+  --translated-address ${public_firewall_ip} \
   --translated-port 443
 
 # Create a network rule collection and add three rules to it.
