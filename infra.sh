@@ -178,3 +178,15 @@ az network firewall network-rule create \
   --firewall-name ${FIREWALL_NAME} \
   --name rl-AzureBotService \
   --protocols TCP
+
+# This rule will enable traffic the bot framework login  endpoint
+az network firewall application-rule create \
+  --resource-group ${RG_NAME} \
+  --collection-name coll-${PREFIX}-application-rules \
+  --source-addresses 10.0.0.0/16 \
+  --protocols "https=443" \
+  --target-fqdns "login.botframework.com" \
+  --firewall-name ${FIREWALL_NAME} \
+  --name rl-Bots \
+  --priority 200 \
+  --action "Allow"
