@@ -1,19 +1,3 @@
-# The bot code examples referenced in this doc do not work, the python config is missing values and code.
-# https://learn.microsoft.com/en-us/azure/architecture/example-scenario/teams/securing-bot-teams-channel
-
-# Code pulled from the following example
-# https://github.com/microsoft/BotBuilder-Samples/blob/main/samples/python/02.echo-bot/README.md
-# https://learn.microsoft.com/en-us/azure/bot-service/dl-network-isolation-how-to?view=azure-bot-service-4.0&tabs=network
-
-# https://learn.microsoft.com/en-us/answers/questions/1476271/how-is-traffic-routed-between-subnets-in-same-azur
-# https://learn.microsoft.com/en-us/azure/firewall/tutorial-firewall-deploy-portal
-
-# https://learn.microsoft.com/en-us/azure/bot-service/bot-service-debug-channel-devtunnel?view=azure-bot-service-4.0
-# https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started?tabs=linux
-
-# https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-firewall-nat-behaviors/ba-p/3825834
-# https://techcommunity.microsoft.com/t5/azure-network-security-blog/configuring-azure-firewall-in-forced-tunneling-mode/ba-p/3581955
-
 # Declare variables (bash syntax)
 export PREFIX="bot"
 export RG_NAME="${PREFIX}-rg"
