@@ -142,7 +142,7 @@ az network firewall nat-rule create \
   --translated-address ${public_firewall_ip} \
   --translated-port 443
 
-# Create a network rule collection and add three rules to it.
+# Create a network rule collection and add four rules to it.
 # The first one is an outbound network rule to only allow traffic to the Teams IP range.
 # The source address is that of the virtual network address space, destination is the Teams IP range.
 az network firewall network-rule create \
