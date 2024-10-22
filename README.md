@@ -36,6 +36,7 @@ Code pulled from the following example
 * https://techcommunity.microsoft.com/t5/azure-network-security-blog/azure-firewall-nat-behaviors/ba-p/3825834
 * https://techcommunity.microsoft.com/t5/azure-network-security-blog/configuring-azure-firewall-in-forced-tunneling-mode/ba-p/3581955
 * https://learn.microsoft.com/en-us/azure/bot-service/bot-service-resources-faq-security?view=azure-bot-service-4.0
+* https://learn.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#skype-for-business-online-and-microsoft-teams:~:text=12-,Allow%0ARequired,2603%3A1063%3A%3A/38%2C%202620%3A1ec%3A6%3A%3A/48%2C%202620%3A1ec%3A40%3A%3A/42,-TCP%3A%20443
 
 ## Notes
 
