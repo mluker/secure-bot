@@ -41,7 +41,6 @@ Code pulled from the following example
 ## Notes
 
 * Had to add a firewall rule (application rule) to allow login.botframework.com
-
 * A valid certificate and custom domain is required to deploy the bot. The bot is deployed to an Azure App Service and the custom domain is used to secure the bot with a valid certificate.
 
     ```bash

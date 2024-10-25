@@ -43,6 +43,9 @@ az identity create --resource-group ${RG_NAME} --name ${USER_MI_NAME}
 # CLIENT_ID=$(az identity create --resource-group ${RG_NAME} --name ${USER_MI_NAME} --query 'clientId' --output tsv)
 # echo "Client ID: $CLIENT_ID"
 
+# Make sure to rename the ./bot/echo-bot/deploymentTemplates/parameters-for-template-AzureBot-with-rg.sample.json file to ./bot/echo-bot/deploymentTemplates/parameters-for-template-AzureBot-with-rg.json
+# Make sure to rename the ./bot/echo-bot/deploymentTemplates/parameters-for-template-BotApp-with-rg.sample.json file to ./bot/echo-bot/deploymentTemplates/parameters-for-template-BotApp-with-rg.json
+# Make sure to update the value in the above files as needed. The AppId is the client id of the managed identity created above.
 # update parameters file with the client id before running the deployment
 az deployment group create --resource-group ${RG_NAME} --template-file ./deploymentTemplates/template-BotApp-with-rg.json --parameters ./deploymentTemplates/parameters-for-template-BotApp-with-rg.json
 
@@ -190,3 +193,6 @@ az network firewall application-rule create \
   --name rl-Bots \
   --priority 200 \
   --action "Allow"
+
+  # Cleanup
+  az group delete --name ${RG_NAME} --no-wait --yes
