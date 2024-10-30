@@ -137,7 +137,7 @@ az network firewall nat-rule create \
   --priority 200 \
   --action DNAT \
   --source-addresses ${TEAMS_IP_RANGE} \
-  --dest-addr ${firewall_internal_ip} \
+  --dest-addr ${public_firewall_ip} \
   --destination-ports 443 \
   --firewall-name ${FIREWALL_NAME} \
   --name rl-ip2appservice \
